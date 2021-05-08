@@ -6,16 +6,17 @@ namespace StringCalculator
     {
         public static int Add(string numbers)
         {
-            if (numbers == "")
-                return 0;
-            else if(int.TryParse(numbers, out int result))
+            var stringarray = numbers.Split(',');
+            var sum = 0;
+            for (int i = 0; i < stringarray.Length; i++)
             {
-                return result;
+                if (int.TryParse(stringarray[i], out int result))
+                {
+                    sum += result;
+                }
             }
-            else
-            {
-                return 3;
-            }
+
+            return sum;
         }
     }
 }
