@@ -34,5 +34,19 @@ namespace StringCalculatorTests
             var result = int.Parse(stringarray[0]) + int.Parse(stringarray[1]);
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
         }
+
+        [DataTestMethod]
+        [DataRow("1,2,3")]
+        public void Add_Up_More_Than_Two_Numbers_In_String_Returns_Sum_Of_Numbers(string numberstring)
+        {
+            var stringarray = numberstring.Split(',');
+            var result = 0;
+            for (int i = 0; i < stringarray.Length; i++)
+            {
+                result += int.Parse(stringarray[i]);
+            }
+
+            Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
+        }
     }
 }
