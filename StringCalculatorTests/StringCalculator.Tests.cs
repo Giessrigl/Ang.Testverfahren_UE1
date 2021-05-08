@@ -25,9 +25,13 @@ namespace StringCalculatorTests
 
         [DataTestMethod]
         [DataRow("1,2")]
+        [DataRow("3,4")]
+        [DataRow("5,6")]
         public void Add_Up_Two_Numbers_In_String_Returns_Sum_Of_Numbers(string numberstring)
         {
-            Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), 3);
+            var stringarray = numberstring.Split(',');
+            var result = int.Parse(stringarray[0]) + int.Parse(stringarray[1]);
+            Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
         }
     }
 }
