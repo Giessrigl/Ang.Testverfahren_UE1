@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace StringCalculator
 {
-    public class StringCalculator
+    public static class StringCalculator
     {
-        public int Add(string numbers)
+        public static int Add(string numbers)
         {
             throw new NotImplementedException();
         }
