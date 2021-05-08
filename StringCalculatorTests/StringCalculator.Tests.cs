@@ -7,6 +7,7 @@ namespace StringCalculatorTests
     {
         [DataTestMethod]
         [DataRow("")]
+        [DataRow("   ")]
         public void Add_Up_Empty_String_Returns_0(string numberstring)
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), 0);
