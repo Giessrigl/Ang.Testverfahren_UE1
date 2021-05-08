@@ -22,5 +22,12 @@ namespace StringCalculatorTests
             var number = int.Parse(numberstring);
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), number);
         }
+
+        [DataTestMethod]
+        [DataRow("1,2")]
+        public void Add_Up_Two_Numbers_In_String_Returns_Sum_Of_Numbers(string numberstring)
+        {
+            Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), 3);
+        }
     }
 }
