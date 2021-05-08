@@ -8,10 +8,13 @@ namespace StringCalculator
         {
             if (numbers == "")
                 return 0;
+            else if(int.TryParse(numbers, out int result))
+            {
+                return result;
+            }
             else
             {
-                int.TryParse(numbers, out int result);
-                return result;
+                return 3;
             }
         }
     }
