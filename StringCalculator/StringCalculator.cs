@@ -9,7 +9,10 @@ namespace StringCalculator
             if (numbers == "")
                 return 0;
             else
-                return 1;
+            {
+                int.TryParse(numbers, out int result);
+                return result;
+            }
         }
     }
 }
