@@ -56,14 +56,7 @@ namespace StringCalculatorTests
         [DataRow("1\n2,3")]
         public void Add_Up_Numbers_With_New_Lines_Between_Them_In_String_Returns_Sum_Of_Numbers(string numberstring)
         {
-            var stringarray = numberstring.Split(',');
-            var result = 0;
-            for (int i = 0; i < stringarray.Length; i++)
-            {
-                result += int.Parse(stringarray[i]);
-            }
-
-            Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
+            Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), 6);
         }
     }
 }
