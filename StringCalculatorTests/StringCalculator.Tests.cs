@@ -37,6 +37,9 @@ namespace StringCalculatorTests
 
         [DataTestMethod]
         [DataRow("1,2,3")]
+        [DataRow("4,5,6,7")]
+        [DataRow("5,6,7,8,9")]
+        [DataRow("7,8,9,10,11,12")]
         public void Add_Up_More_Than_Two_Numbers_In_String_Returns_Sum_Of_Numbers(string numberstring)
         {
             var stringarray = numberstring.Split(',');
