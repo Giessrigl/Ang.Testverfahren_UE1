@@ -14,9 +14,13 @@ namespace StringCalculatorTests
 
         [DataTestMethod]
         [DataRow("1")]
+        [DataRow("2")]
+        [DataRow("3")]
+        [DataRow("75")]
         public void Add_Up_One_Number_In_String_Returns_That_Number(string numberstring)
         {
-            Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), 1);
+            var number = int.Parse(numberstring);
+            Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), number);
         }
     }
 }
