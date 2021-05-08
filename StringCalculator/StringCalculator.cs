@@ -6,7 +6,9 @@ namespace StringCalculator
     {
         public static int Add(string numbers)
         {
-            var stringarray = numbers.Split(',');
+            var numberstring = numbers.Replace('\n', ',');
+
+            var stringarray = numberstring.Split(',');
             var sum = 0;
             for (int i = 0; i < stringarray.Length; i++)
             {
