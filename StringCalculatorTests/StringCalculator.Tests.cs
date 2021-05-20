@@ -63,6 +63,8 @@ namespace StringCalculatorTests
 
         [DataTestMethod]
         [DataRow("//;\n1;2", 3)]
+        [DataRow("1,2", 3)]
+        [DataRow("///\n1/2", 3)]
         public void Add_Up_Numbers_With_New_Delimiters_Returns_Sum_Of_Numbers(string numberstring, int result)
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
