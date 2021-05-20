@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace StringCalculatorTests
 {
@@ -68,6 +69,21 @@ namespace StringCalculatorTests
         public void Add_Up_Numbers_With_New_Delimiters_Returns_Sum_Of_Numbers(string numberstring, int result)
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
+        }
+
+        [DataTestMethod]
+        [DataRow("-1;2", "-1")]
+        public void Add_Up_Negative_Numbers_Returns_An_Exception(string numberstring, string negatives)
+        {
+            try
+            {
+                StringCalculator.StringCalculator.Add(numberstring);
+                Assert.Fail();
+            }
+            catch(Exception e)
+            {
+                Assert.AreEqual(e, new Exception("negatives not allowed - " + negatives));
+            }
         }
     }
 }
