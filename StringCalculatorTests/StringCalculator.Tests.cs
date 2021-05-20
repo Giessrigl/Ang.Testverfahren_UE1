@@ -67,6 +67,7 @@ namespace StringCalculatorTests
         [DataRow("1,2", 3)]
         [DataRow("///\n1/2", 3)]
         [DataRow("//-\n-1\n-2", 3)]
+        [DataRow("//1\n3\n1215", 10)]
         public void Add_Up_Numbers_With_New_Delimiters_Returns_Sum_Of_Numbers(string numberstring, int result)
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
@@ -103,6 +104,8 @@ namespace StringCalculatorTests
 
         [DataTestMethod]
         [DataRow("//[***]\n1***2***3", 6)]
+        [DataRow("//[;]\n8;1004;2", 10)]
+        [DataRow("//[12]\n8121004122", 10)]
         public void Add_Up_Numbers_With_Any_Length_Of_Delimiter_Returns_Sum_Of_Numbers(string numberstring, int result)
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
