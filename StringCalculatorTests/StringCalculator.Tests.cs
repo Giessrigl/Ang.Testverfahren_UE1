@@ -60,5 +60,12 @@ namespace StringCalculatorTests
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), 6);
         }
+
+        [DataTestMethod]
+        [DataRow("//;\n1;2")]
+        public void Add_Up_Numbers_With_New_Delimiters_Returns_Sum_Of_Numbers(string numberstring)
+        {
+            Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), 6);
+        }
     }
 }
