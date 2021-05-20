@@ -79,6 +79,7 @@ namespace StringCalculatorTests
         [DataRow("//;\n-1;2;-3\n-4", "-1,-3,-4")]
         [DataRow("-1\n \n-2,-3,4", "-1,-2,-3")]
         [DataRow("2,1005,-1004", "-1004")]
+        [DataRow("//[*][12][x]\n1*212-3x1005", "-3")]
         public void Add_Up_Negative_Numbers_Returns_An_Exception(string numberstring, string negatives)
         {
             try
@@ -97,6 +98,7 @@ namespace StringCalculatorTests
         [DataRow("2,1005", 2)]
         [DataRow("//n\n8n1005n1000", 1008)]
         [DataRow("1005,1000,999", 1999)]
+        [DataRow("//[*][12][x]\n1*2123x1005", 6)]
         public void Add_Up_Numbers_Returns_Sum_Of_Numbers_Ignoring_Numbers_Over_1000(string numberstring, int result)
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
@@ -113,6 +115,8 @@ namespace StringCalculatorTests
 
         [DataTestMethod]
         [DataRow("//[*][%]\n1*2%3", 6)]
+        [DataRow("//[*][12][x]\n1*2123", 6)]
+        [DataRow("//[***][**]\n1**2***3", 6)]
         public void Add_Up_Numbers_With_Multiple_Delimiters_Returns_Sum_Of_Numbers(string numberstring, int result)
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
