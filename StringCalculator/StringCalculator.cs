@@ -7,19 +7,26 @@ namespace StringCalculator
     {
         public static int Add(string numbers)
         {
-            var delimiter = ",";
+            var delimiter = new string[] { "," };
             var options = numbers.Split('\n', 2);
             List<int> nums;
 
             if (options[0].StartsWith("//["))
             {
-                delimiter = options[0].Substring(3, options[0].Length - 4);
+                if (options[0].Remove(0, 3).Contains("["))
+                {
+                    delimiter = options[0].Remove(0, 3).Split("][", StringSplitOptions.RemoveEmptyEntries);
+                    delimiter[delimiter.Length-1] = delimiter[delimiter.Length - 1].Replace("]", "");
+                }
+                else
+                    delimiter = options[0].Remove(0, 3).Split("]", StringSplitOptions.RemoveEmptyEntries);
+
                 nums = EvaluateNumbers(options[1], delimiter);
                 return SumUpNumbers(nums);
             }
             else if(options[0].StartsWith("//"))
             {
-                delimiter = $"{options[0][2]}";
+                delimiter = new string[] { $"{options[0][2]}" };
                 nums = EvaluateNumbers(options[1], delimiter);
                 return SumUpNumbers(nums);
             }
@@ -28,10 +35,10 @@ namespace StringCalculator
             return SumUpNumbers(nums);
         }
 
-        private static List<int> EvaluateNumbers(string numbers, string delimiter)
+        private static List<int> EvaluateNumbers(string numbers, string[] delimiters)
         {
-            var numberstring = numbers.Trim().Replace("\n", delimiter);
-            var stringarray = numberstring.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
+            var numberstring = numbers.Trim().Replace("\n", delimiters[0]);
+            var stringarray = numberstring.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
 
             var accepted = true;
             var negativeNumbers = "";
