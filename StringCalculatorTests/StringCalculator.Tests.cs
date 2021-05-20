@@ -66,6 +66,7 @@ namespace StringCalculatorTests
         [DataRow("//;\n1;2", 3)]
         [DataRow("1,2", 3)]
         [DataRow("///\n1/2", 3)]
+        [DataRow("//-\n-1\n-2", 3)]
         public void Add_Up_Numbers_With_New_Delimiters_Returns_Sum_Of_Numbers(string numberstring, int result)
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
@@ -73,6 +74,8 @@ namespace StringCalculatorTests
 
         [DataTestMethod]
         [DataRow("-1,2", "-1")]
+        [DataRow("//;n-1;2;-3\n-4", "-1,-3,-4")]
+        [DataRow("-1\n \n-2,-3,4", "-1,-2,-3")]
         public void Add_Up_Negative_Numbers_Returns_An_Exception(string numberstring, string negatives)
         {
             try
