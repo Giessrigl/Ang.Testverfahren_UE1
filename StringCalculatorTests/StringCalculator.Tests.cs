@@ -91,8 +91,8 @@ namespace StringCalculatorTests
         }
 
         [DataTestMethod]
-        [DataRow("1001", "0")]
-        [DataRow("2,1005", "2")]
+        [DataRow("1001", 0)]
+        [DataRow("2,1005", 2)]
         public void Add_Up_Numbers_Returns_Sum_Of_Numbers_Ignoring_Numbers_Over_1000(string numberstring, int result)
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
