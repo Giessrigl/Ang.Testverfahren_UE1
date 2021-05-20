@@ -100,5 +100,12 @@ namespace StringCalculatorTests
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
         }
+
+        [DataTestMethod]
+        [DataRow("//[***]\n1***2***3", 6)]
+        public void Add_Up_Numbers_With_Any_Length_Of_Delimiter_Returns_Sum_Of_Numbers(string numberstring, int result)
+        {
+            Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), result);
+        }
     }
 }
