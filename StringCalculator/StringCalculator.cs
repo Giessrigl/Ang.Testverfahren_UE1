@@ -8,7 +8,7 @@ namespace StringCalculator
         {
             var numberstring = numbers.Replace('\n', ',');
 
-            var stringarray = numberstring.Split(',');
+            var stringarray = numberstring.Split(',', StringSplitOptions.RemoveEmptyEntries);
             var sum = 0;
             for (int i = 0; i < stringarray.Length; i++)
             {
