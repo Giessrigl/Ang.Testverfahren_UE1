@@ -20,18 +20,32 @@ namespace StringCalculator
 
         private static int Addnumbers(string numbers, char delimiter)
         {
-            var numberstring = numbers.Trim().Replace('\n', delimiter);
+            var accepted = true;
+            var negativeNumbers = "";
 
+            var numberstring = numbers.Trim().Replace('\n', delimiter);
             var stringarray = numberstring.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
             var sum = 0;
             for (int i = 0; i < stringarray.Length; i++)
             {
                 if (int.TryParse(stringarray[i], out int result))
                 {
+                    if (result < 0)
+                    {
+                        accepted = false;
+                        negativeNumbers = negativeNumbers + result + ',';
+                    }
+                        
                     sum += result;
                 }
             }
 
+            if (!accepted)
+            {
+                negativeNumbers = negativeNumbers.Substring(0, negativeNumbers.Length - 1);
+                throw new Exception("negatives not allowed - " + negativeNumbers);
+            }
+               
             return sum;
         }
     }

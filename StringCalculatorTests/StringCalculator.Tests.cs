@@ -72,7 +72,7 @@ namespace StringCalculatorTests
         }
 
         [DataTestMethod]
-        [DataRow("-1;2", "-1")]
+        [DataRow("-1,2", "-1")]
         public void Add_Up_Negative_Numbers_Returns_An_Exception(string numberstring, string negatives)
         {
             try
@@ -82,7 +82,7 @@ namespace StringCalculatorTests
             }
             catch(Exception e)
             {
-                Assert.AreEqual(e, new Exception("negatives not allowed - " + negatives));
+                Assert.AreEqual(e.Message, "negatives not allowed - " + negatives);
             }
         }
     }

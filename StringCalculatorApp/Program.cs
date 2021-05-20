@@ -2,11 +2,11 @@
 
 namespace StringCalculatorApp
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            StringCalculator.StringCalculator.Add("-1,2");
         }
     }
 }
