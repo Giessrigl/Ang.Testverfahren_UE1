@@ -74,7 +74,8 @@ namespace StringCalculatorTests
 
         [DataTestMethod]
         [DataRow("-1,2", "-1")]
-        [DataRow("//;n-1;2;-3\n-4", "-1,-3,-4")]
+        [DataRow("///\n-1/-4", "-1,-4")]
+        [DataRow("//;\n-1;2;-3\n-4", "-1,-3,-4")]
         [DataRow("-1\n \n-2,-3,4", "-1,-2,-3")]
         public void Add_Up_Negative_Numbers_Returns_An_Exception(string numberstring, string negatives)
         {
