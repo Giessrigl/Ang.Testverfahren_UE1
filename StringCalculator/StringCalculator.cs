@@ -7,13 +7,19 @@ namespace StringCalculator
     {
         public static int Add(string numbers)
         {
-            var delimiter = ',';
+            var delimiter = ",";
             var options = numbers.Split('\n', 2);
             List<int> nums;
 
-            if (options[0].StartsWith("//"))
+            if (options[0].StartsWith("//["))
             {
-                delimiter = options[0][2];
+                delimiter = options[0].Substring(3, options[0].Length - 4);
+                nums = EvaluateNumbers(options[1], delimiter);
+                return SumUpNumbers(nums);
+            }
+            else if(options[0].StartsWith("//"))
+            {
+                delimiter = $"{options[0][2]}";
                 nums = EvaluateNumbers(options[1], delimiter);
                 return SumUpNumbers(nums);
             }
@@ -22,9 +28,9 @@ namespace StringCalculator
             return SumUpNumbers(nums);
         }
 
-        private static List<int> EvaluateNumbers(string numbers, char delimiter)
+        private static List<int> EvaluateNumbers(string numbers, string delimiter)
         {
-            var numberstring = numbers.Trim().Replace('\n', delimiter);
+            var numberstring = numbers.Trim().Replace("\n", delimiter);
             var stringarray = numberstring.Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
 
             var accepted = true;

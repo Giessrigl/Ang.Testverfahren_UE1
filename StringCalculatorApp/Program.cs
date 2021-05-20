@@ -6,7 +6,7 @@ namespace StringCalculatorApp
     {
         public static void Main(string[] args)
         {
-            StringCalculator.StringCalculator.Add("//;n-1;2;-3\n-4");
+            StringCalculator.StringCalculator.Add("//[***]\n1***2***3");
         }
     }
 }
