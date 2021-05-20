@@ -54,6 +54,8 @@ namespace StringCalculatorTests
 
         [DataTestMethod]
         [DataRow("1\n2,3")]
+        [DataRow("1\n2\n3, 4")]
+        [DataRow("1\n \n2, 3,\n 4")]
         public void Add_Up_Numbers_With_New_Lines_Between_Them_In_String_Returns_Sum_Of_Numbers(string numberstring)
         {
             Assert.AreEqual(StringCalculator.StringCalculator.Add(numberstring), 6);
